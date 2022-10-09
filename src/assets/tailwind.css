@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-gray-200;
+  }
+
+  html.dark {
+    @apply bg-gray-900 text-gray-400;
+  }
+  
+  input, table, select {
+    @apply block w-full;
+  }
+  input, button, a, select {
+    @apply focus:outline-none focus-visible:ring-2;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply border px-2 py-1 h-9;
+    @apply dark:bg-gray-700 dark:text-gray-200 dark:border-gray-900;
+  }
+  .btn {
+    @apply text-sm py-2 px-4;
+
+    &.btn-primary {
+      @apply bg-primary text-gray-100;
+    }
+    &.btn-danger {
+      @apply bg-red-500 dark:bg-red-600 text-gray-100;
+      @apply hover:bg-opacity-80;
+    }
+    &.btn-unstyled {
+      @apply bg-black bg-opacity-0 hover:bg-opacity-5;
+      @apply dark:bg-white dark:bg-opacity-0 dark:hover:bg-opacity-5;
+    }
+  }
+
+  .container {
+    @apply mx-auto px-4 w-full max-w-2xl;
+  }
+}
+
+@layer utilities {
+  .bg-1 {
+    @apply bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300;
+  }
+  .bg-2 {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200;
+  }
+  .bg-3 {
+    @apply bg-gray-200 shadow dark:bg-gray-700 text-gray-700 dark:text-gray-200;
+  }
+}

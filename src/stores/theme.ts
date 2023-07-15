@@ -5,7 +5,7 @@ export const useThemeStore = defineStore('theme', {
     return { style: 'system' }
   },
   getters: {
-    isDark () {
+    isDark (): boolean {
       if (this.style === 'dark') {
         return true
       }
@@ -33,7 +33,7 @@ export const useThemeStore = defineStore('theme', {
         document.documentElement.classList.remove('dark')
       }
     },
-    change (theme) {
+    change (theme: string) {
       if (theme === 'dark' || theme === 'light') {
         localStorage.theme = theme
         this.style = theme

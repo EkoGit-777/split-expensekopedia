@@ -1,6 +1,12 @@
-import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { defineConfig, loadEnv } from 'vite'
+
+/**
+ * @type {import('vite').UserConfig}
+ */
+// }
+
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -13,7 +19,7 @@ export default ({ mode }) => {
     ],
     server: {
       host: process.env.VITE_SERVER_HOST,
-      port: process.env.VITE_SERVER_PORT ?? 3000,
+      port: Number(process.env.VITE_SERVER_PORT) ?? 3000,
       https: process.env.VITE_SERVER_HTTPS_CERT ? {
         cert: process.env.VITE_SERVER_HTTPS_CERT,
         key: process.env.VITE_SERVER_HTTPS_KEY,

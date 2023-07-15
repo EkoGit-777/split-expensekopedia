@@ -1,0 +1,50 @@
+<script setup lang="ts">
+import { ButtonHTMLAttributes } from 'vue'
+
+interface Props {
+  loading?: boolean,
+  disabled?: boolean,
+  type?: ButtonHTMLAttributes['type'],
+}
+withDefaults(defineProps<Props>(), {
+  disabled: false,
+  loading: false,
+  type: 'button',
+})
+</script>
+<template>
+  <button class="btn btn-primary" :type="type" :disabled="disabled || loading">
+    <slot></slot>
+    <span v-if="loading" class="absolute dot"></span>
+  </button>
+</template>
+
+<style lang="postcss" scoped>
+.dot:after {
+  animation: dotty steps(1, end) 1s infinite;
+  content: '';
+}
+</style>
+<style>
+@keyframes dotty {
+  0% {
+    content: '';
+  }
+
+  25% {
+    content: '.';
+  }
+
+  50% {
+    content: '..';
+  }
+
+  75% {
+    content: '...';
+  }
+
+  100% {
+    content: '';
+  }
+}
+</style>

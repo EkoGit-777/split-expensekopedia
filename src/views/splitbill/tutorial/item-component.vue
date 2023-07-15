@@ -1,0 +1,115 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import ButtonEdit from '@/components/button/button-edit.vue'
+import ButtonRemove from '@/components/button/button-remove.vue'
+import { useTutorialStore } from '@/stores/tutorial'
+import TutorialComponent from './tutorial-component.vue'
+
+const tutorial = useTutorialStore()
+const items = ref([
+  {
+    name: 'Ayam Geprek Sambel Ijo',
+    price: '15.000',
+  },
+  {
+    name: 'Es Jeruk Jumbo',
+    price: '7.000',
+  },
+],
+)
+</script>
+
+<template>
+  <div class="flex flex-col h-full rounded overflow-auto pb-8">
+    <div class="flex bg-3 px-4 py-2 text-lg rounded-t space-x-2">
+      <div>John Doe</div>
+      <button-edit />
+    </div>
+    <div class="flex flex-col bg-2 p-4 space-y-4 rounded-b max-h-full overflow-y-auto" :class="{'z-20':tutorial.activeState==1}">
+      <div class="overflow-y-auto px-2 max-h-full">
+        <table>
+          <thead class="text-sm">
+            <th class="text-left w-full">
+              Pesanan
+            </th>
+            <th class="text-right whitespace-nowrap">
+              Harga
+            </th>
+            <th>Aksi</th>
+          </thead>
+          <tbody class="items">
+            <tr v-for="item in items" :key="item.name">
+              <td>
+                {{ item.name }}
+              </td>
+              <td class="text-right">
+                {{ item.price }}
+              </td>
+              <td>
+                <div class="flex space-x-2 px-2">
+                  <button-edit :class="{'z-20':tutorial.activeState==2}" />
+                  <button-remove :class="{'z-20':tutorial.activeState==2}" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="text-right py-2 pr-8">
+                Total Urunan
+              </th>
+              <td class="text-right">
+                20.092
+              </td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="px-2 flex justify-between">
+        <div>
+          <button class="text-link">
+            Reset Item
+          </button>
+        </div>
+        <div>
+          <button class="text-link">
+            Tambah Item
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <tutorial-component v-if="tutorial.activeState==1" class="top-96" />
+  <tutorial-component v-if="tutorial.activeState==2" class="top-96" />
+</template>
+
+<style lang="postcss" scoped>
+table {
+
+  td,
+  th {
+    @apply px-2;
+  }
+
+  th {
+    @apply align-bottom py-4;
+  }
+
+  tbody.items td {
+    @apply border-b dark:border-gray-700 py-1;
+  }
+
+  tbody.items tr:last-child td {
+    @apply border-0;
+  }
+
+  tbody.items tr {
+    @apply hover:bg-black hover:bg-opacity-20;
+  }
+
+  tbody.items tr.items-paid {
+    @apply line-through text-gray-400 dark:text-gray-500;
+  }
+}
+</style>

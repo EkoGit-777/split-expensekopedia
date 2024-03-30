@@ -1,7 +1,6 @@
 import { reactive, ref } from 'vue'
 import { useApi } from '@/functions/api'
 import { useToastStore } from '@/stores/toast'
-import { OrderDiscountType } from '@/types/order-discount'
 
 export function useOrderDiscountModel () {
   const api = useApi()

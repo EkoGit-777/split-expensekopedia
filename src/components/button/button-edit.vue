@@ -1,7 +1,15 @@
+<script setup lang="ts">
+interface Props {
+  label?: string,
+}
+withDefaults(defineProps<Props>(), {
+  label: '',
+})
+</script>
 <template>
-  <button class="bg-3 h-8 w-8 p-2 rounded" title="Ubah">
+  <button class="bg-3 h-8 w-8 rounded p-2" :title="'Ubah ' + label">
     <svg
-      class="w-4 h-4 fill-current"
+      class="h-4 w-4 fill-current"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
       <path

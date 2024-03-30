@@ -26,14 +26,14 @@ const value = computed({
 })
 </script>
 <template>
-  <div class="relative w-full flex outline-none bg-none">
+  <div class="relative w-full flex bg-none outline-none">
     <input-text
       id="password"
       v-model="value"
       :type="typePassword"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
-      class="pr-12 py-2 w-full border rounded focus:outline-none"
+      class="w-full border rounded py-2 pr-12 focus:outline-none"
       :class="{ 'border-red-500': errorForm, 'border-gray-300': !errorForm, 'pl-12': prefixIcon, 'pl-2': !prefixIcon }" />
     <button
       class="absolute right-4 top-2 focus:outline-none"
@@ -42,7 +42,7 @@ const value = computed({
       @mouseup="typePassword = 'password'">
       <template v-if="typePassword === 'password'">
         <svg
-          class="w-6 h-4 fill-current"
+          class="h-4 w-6 fill-current"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 640 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
           <path
@@ -51,7 +51,7 @@ const value = computed({
       </template>
       <template v-else>
         <svg
-          class="w-6 h-4 fill-current"
+          class="h-4 w-6 fill-current"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
           <path
@@ -62,7 +62,7 @@ const value = computed({
     <template v-if="prefixIcon">
       <div class="absolute left-4 top-2">
         <svg
-          class="w-6 h-4 fill-current"
+          class="h-4 w-6 fill-current"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
           <path

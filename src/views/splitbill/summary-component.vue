@@ -8,12 +8,12 @@ const showDetail = ref(false)
 </script>
 
 <template>
-  <div class="container py-4 bg-2">
+  <div class="bg-2 py-4 container">
     <div class="flex items-center">
       <div v-if="showDetail === false">
         <button-information @click="showDetail = true" />
       </div>
-      <div class="text-right flex-1">
+      <div class="flex-1 text-right">
         <template v-if="showDetail === true">
           <div>
             <button class="p-2" type="button" @click="showDetail = false">

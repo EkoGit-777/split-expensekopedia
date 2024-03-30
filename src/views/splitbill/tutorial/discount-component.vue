@@ -20,12 +20,12 @@ const discounts = ref([
   <card-frame :title="'Diskon'" :class="{'z-20':tutorial.activeState==4}">
     <div class="space-y-2">
       <div v-for="discount in discounts" :key="discount.id" class="flex items-center">
-        <div class="flex-1 flex gap-2 items-center">
+        <div class="flex flex-1 items-center gap-2">
           <div class="w-20">
             {{ discount.percent }}%
           </div>
           <hr class="h-6 border">
-          <div class="text-right w-full">
+          <div class="w-full text-right">
             {{ discount.cash }}
           </div>
           <button-edit />
@@ -34,7 +34,7 @@ const discounts = ref([
       </div>
     </div>
     <div class="text-right">
-      <button class="bg-3 rounded-md text-sm p-2">
+      <button class="bg-3 rounded-md p-2 text-sm">
         + Biaya
       </button>
     </div>

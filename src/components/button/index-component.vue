@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ButtonHTMLAttributes } from 'vue'
+import { type ButtonHTMLAttributes } from 'vue'
 
 interface Props {
   loading?: boolean,
@@ -15,7 +15,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <button class="btn btn-primary" :type="type" :disabled="disabled || loading">
     <slot></slot>
-    <span v-if="loading" class="absolute dot"></span>
+    <span v-if="loading" class="dot absolute"></span>
   </button>
 </template>
 

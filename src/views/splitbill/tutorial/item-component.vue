@@ -20,19 +20,19 @@ const items = ref([
 </script>
 
 <template>
-  <div class="flex flex-col h-full rounded overflow-auto pb-8">
-    <div class="flex bg-3 px-4 py-2 text-lg rounded-t space-x-2">
+  <div class="h-full flex flex-col overflow-auto rounded pb-8">
+    <div class="bg-3 flex rounded-t px-4 py-2 text-lg space-x-2">
       <div>John Doe</div>
       <button-edit />
     </div>
-    <div class="flex flex-col bg-2 p-4 space-y-4 rounded-b max-h-full overflow-y-auto" :class="{'z-20':tutorial.activeState==1}">
-      <div class="overflow-y-auto px-2 max-h-full">
+    <div class="bg-2 max-h-full flex flex-col overflow-y-auto rounded-b p-4 space-y-4" :class="{'z-20':tutorial.activeState==1}">
+      <div class="max-h-full overflow-y-auto px-2">
         <table>
           <thead class="text-sm">
-            <th class="text-left w-full">
+            <th class="w-full text-left">
               Pesanan
             </th>
-            <th class="text-right whitespace-nowrap">
+            <th class="whitespace-nowrap text-right">
               Harga
             </th>
             <th>Aksi</th>
@@ -46,7 +46,7 @@ const items = ref([
                 {{ item.price }}
               </td>
               <td>
-                <div class="flex space-x-2 px-2">
+                <div class="flex px-2 space-x-2">
                   <button-edit :class="{'z-20':tutorial.activeState==2}" />
                   <button-remove :class="{'z-20':tutorial.activeState==2}" />
                 </div>
@@ -55,7 +55,7 @@ const items = ref([
           </tbody>
           <tfoot>
             <tr>
-              <th class="text-right py-2 pr-8">
+              <th class="py-2 pr-8 text-right">
                 Total Urunan
               </th>
               <td class="text-right">
@@ -66,7 +66,7 @@ const items = ref([
           </tfoot>
         </table>
       </div>
-      <div class="px-2 flex justify-between">
+      <div class="flex justify-between px-2">
         <div>
           <button class="text-link">
             Reset Item

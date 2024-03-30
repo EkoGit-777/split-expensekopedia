@@ -8,7 +8,7 @@ import AppModal from '@/components/modal/index-component.vue'
 import { useOrderStore } from '@/stores/order'
 
 const order = useOrderStore()
-const modal = ref()
+const modal = ref<InstanceType<typeof AppModal>>()
 const item = reactive({
   index: 0,
   name: '',
@@ -18,10 +18,10 @@ const item = reactive({
 
 const open = () => {
   resetItem()
-  modal.value.open()
+  modal.value?.open()
 }
 const close = () => {
-  modal.value.close()
+  modal.value?.close()
 }
 const submit = () => {
   item.index = order.selectedPerson ?? 0

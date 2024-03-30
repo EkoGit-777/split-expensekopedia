@@ -1,15 +1,14 @@
 import { reactive, ref } from 'vue'
 import { useApi } from '@/functions/api'
 import { useToastStore } from '@/stores/toast'
-import { OrderType } from '@/types/order'
 import { useOrderStore } from './../stores/order'
-import { OrderFullType } from './../types/order-full.d'
 
 export function useOrderModel () {
   const api = useApi()
   const orderStore = useOrderStore()
   const toast = useToastStore()
   const loading = ref(false)
+  const paginate = ref<Pagination>()
   const errors = ref<FormError>({})
   const orders = ref<OrderType[]>([])
   const order = ref<OrderType>()
@@ -24,6 +23,7 @@ export function useOrderModel () {
     try {
       const response = await api.GET<ApiCollection<OrderType>>('splitbill/order')
       orders.value = response.data
+      paginate.value = response.meta
     } finally {
       loading.value = false
     }
@@ -63,8 +63,8 @@ export function useOrderModel () {
       errors.value = api.formErrors(error)
     } finally {
       loading.value = false
-      return status
     }
+    return status
   }
   const deleteData = async () => {
     loading.value = true
@@ -77,8 +77,8 @@ export function useOrderModel () {
       errors.value = api.formErrors(error)
     } finally {
       loading.value = false
-      return status
     }
+    return status
   }
 
   return {

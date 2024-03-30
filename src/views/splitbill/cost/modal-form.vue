@@ -7,23 +7,23 @@ import AppModal from '@/components/modal/index-component.vue'
 import { useOrderStore } from '@/stores/order'
 
 const order = useOrderStore()
-const modal = ref()
-const index = ref(null)
+const modal = ref<InstanceType<typeof AppModal>>()
+const index = ref<number|null>(null)
 const cost = reactive<Cost>({
   id: null,
   title: '',
   nominal: 0,
 })
 
-const open = ({ id, title, nominal }: Cost, i = null) => {
+const open = ({ id, title, nominal }: Cost, i?: number) => {
   cost.id = id
   cost.title = title
   cost.nominal = nominal
-  index.value = i
-  modal.value.open()
+  index.value = i ?? null
+  modal.value?.open()
 }
 const close = () => {
-  modal.value.close()
+  modal.value?.close()
 }
 const submit = () => {
   if (index.value == null) {

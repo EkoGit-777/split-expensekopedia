@@ -4,10 +4,10 @@ defineProps<{
 }>()
 </script>
 <template>
-  <button class="bg-3 h-8 w-8 p-2 rounded" title="Tandai lunas">
+  <button class="bg-3 h-8 w-8 rounded p-2" title="Tandai lunas">
     <svg
       v-if="!paid"
-      class="w-4 h-4 fill-current"
+      class="h-4 w-4 fill-current"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
       <path
@@ -15,7 +15,7 @@ defineProps<{
     </svg>
     <svg
       v-if="paid"
-      class="w-4 h-4 fill-current"
+      class="h-4 w-4 fill-current"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
       <path

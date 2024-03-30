@@ -7,7 +7,7 @@ import { useOrderStore } from '@/stores/order'
 
 const order = useOrderStore()
 
-const modal = ref()
+const modal = ref<InstanceType<typeof AppModal>>()
 const item = reactive({
   indexItem: 0,
   name: '',
@@ -18,10 +18,10 @@ const open = ({ name, price }: { name: string, price: number }, i: number) => {
   item.name = name
   item.price = Number(price)
   item.indexItem = i
-  modal.value.open()
+  modal.value?.open()
 }
 const close = () => {
-  modal.value.close()
+  modal.value?.close()
 }
 
 const submit = () => {

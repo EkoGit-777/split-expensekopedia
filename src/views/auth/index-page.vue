@@ -31,17 +31,17 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="flex justify-center h-full">
-    <div class="max-h-fit my-auto text-center space-y-4">
+  <div class="h-full flex justify-center">
+    <div class="my-auto max-h-fit text-center space-y-4">
       <h1 class="text-3xl">
         Selamat Datang
       </h1>
       <h2 class="text-lg">
         Silahkan Login Untuk Melanjutkan
       </h2>
-      <div class="w-96 text-left px-8 py-4 rounded-xl border border-gray-600 bg-white">
+      <div class="w-96 border border-gray-600 rounded-xl bg-white px-8 py-4 text-left">
         <form class="space-y-2" @submit.prevent="attempLogin">
-          <label for="email" class="text-lg font-medium text-black">Email</label>
+          <label for="email" class="text-lg text-black font-medium">Email</label>
           <input-box
             id="email"
             v-model="form.email"
@@ -51,7 +51,7 @@ onMounted(async () => {
             <template #prefix>
               <div class="pl-2">
                 <svg
-                  class="w-6 h-4 fill-current"
+                  class="h-4 w-6 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                   <path
@@ -61,15 +61,15 @@ onMounted(async () => {
             </template>
           </input-box>
           <error-message :message="errors.email" />
-          <label for="password" class="text-lg font-medium text-black">Password</label>
+          <label for="password" class="text-lg text-black font-medium">Password</label>
           <input-password v-model="form.password" :prefix-icon="true" />
           <error-message :message="errors.password" />
-          <div class="space-y-2 pt-2">
-            <submit-button class="w-full p-2 rounded-md bg-3" :type="'submit'" :loading="loading">
+          <div class="pt-2 space-y-2">
+            <submit-button class="bg-3 w-full rounded-md p-2" :type="'submit'" :loading="loading">
               Login
             </submit-button>
             <hr class="border-2 border-gray-500">
-            <submit-button class="w-full p-2 rounded-md bg-3" :loading="loading" @click="loginGuest">
+            <submit-button class="bg-3 w-full rounded-md p-2" :loading="loading" @click="loginGuest">
               Login as Guest
             </submit-button>
           </div>

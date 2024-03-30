@@ -8,13 +8,13 @@ import { useOrderStore } from '@/stores/order'
 import ModalDiscountForm from './modal-form.vue'
 
 const order = useOrderStore()
-const modalDiscountFormRef = ref()
+const modalDiscountFormRef = ref<InstanceType<typeof ModalDiscountForm>>()
 
 const addDiscount = () => {
-  modalDiscountFormRef.value.open({ percent: 0, cash: 0 })
+  modalDiscountFormRef.value?.open({ percent: 0, cash: 0 })
 }
 const editDiscount = (item: Discount, index: number) => {
-  modalDiscountFormRef.value.open(item, index)
+  modalDiscountFormRef.value?.open(item, index)
 }
 </script>
 
@@ -22,12 +22,12 @@ const editDiscount = (item: Discount, index: number) => {
   <card-frame :title="'Diskon'">
     <div class="space-y-2">
       <div v-for="(discount, index) in order.discounts" :key="index" class="flex items-center">
-        <div class="flex-1 flex gap-2 items-center">
+        <div class="flex flex-1 items-center gap-2">
           <div class="w-20">
             {{ order.currency(currency(discount.percent)).format() }}%
           </div>
           <hr class="h-6 border">
-          <div class="text-right w-full">
+          <div class="w-full text-right">
             {{ order.currency(currency(discount.cash)).format() }}
           </div>
           <button-edit @click="editDiscount(discount, index)" />
@@ -36,7 +36,7 @@ const editDiscount = (item: Discount, index: number) => {
       </div>
     </div>
     <div class="text-right">
-      <button class="bg-3 rounded-md text-sm p-2" title="Tambah Diskon" @click="addDiscount">
+      <button class="bg-3 rounded-md p-2 text-sm" title="Tambah Diskon" @click="addDiscount">
         + Diskon
       </button>
     </div>

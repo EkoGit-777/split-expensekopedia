@@ -26,14 +26,14 @@ onMounted(() => {
 
 <template>
   <div class="relative h-full">
-    <div class="flex p-4 h-full">
+    <div class="h-full flex p-4">
       <div class="w-96 flex-none">
         <customer-list />
       </div>
-      <div class="mx-auto px-8 max-w-2xl w-full h-full">
+      <div class="mx-auto h-full max-w-2xl w-full px-8">
         <order-item />
       </div>
-      <div class="w-72 flex flex-col flex-none space-y-4 overflow-auto">
+      <div class="w-72 flex flex-none flex-col overflow-auto space-y-4">
         <template v-if="auth.user.id">
           <order-information />
         </template>

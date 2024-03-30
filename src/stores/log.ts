@@ -8,6 +8,14 @@ export const useLogStore = defineStore('Log', {
     // changes => (array of string) list of changes
     logs: [
       {
+        version: '1.1.1',
+        date: '2024-03-31',
+        changes: [
+          'Add order list',
+          'Minor fix',
+        ],
+      },
+      {
         version: '1.1.0',
         date: '2023-07-15',
         changes: [

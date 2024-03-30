@@ -21,7 +21,7 @@ const currencySymbol = useCurrencySymbolStore()
 <template>
   <div class="relative flex items-center">
     <input-number :id="id" v-model="value" class="form-input !pl-9" />
-    <div class="absolute left-2 text-gray-400 w-5 text-center">
+    <div class="absolute left-2 w-5 text-center text-gray-400">
       {{ currencySymbol.symbol }}
     </div>
   </div>

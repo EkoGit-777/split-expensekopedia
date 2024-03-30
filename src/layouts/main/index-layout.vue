@@ -7,7 +7,7 @@ theme.setup()
 </script>
 
 <template>
-  <layout-navbar class="bg-3 text-gray-50 top-0 fixed inset-x-0 z-10" />
+  <layout-navbar class="bg-3 fixed inset-x-0 top-0 z-10" />
   <div class="h-screen pt-14">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">

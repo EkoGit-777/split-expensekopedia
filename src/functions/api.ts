@@ -1,10 +1,10 @@
-import axios, { AxiosRequestConfig } from 'axios'
-import Router from '@/router'
+import axios, { type AxiosRequestConfig } from 'axios'
+import { useRouter } from 'vue-router'
 import { usePageStore } from '@/stores/page'
 import { useToastStore } from '@/stores/toast'
 
 export function useApi () {
-  axios.defaults.withCredentials = true
+  const router = useRouter()
   const page = usePageStore()
   const toast = useToastStore()
 
@@ -17,6 +17,8 @@ export function useApi () {
       'X-Requested-With': 'XMLHttpRequest',
       'Timezone-Offset': -new Date().getTimezoneOffset(),
     },
+    withCredentials: true,
+    withXSRFToken: true,
   }
 
   const REQUEST = <T>(conf: AxiosRequestConfig, retryIfCsrfError = true) => {
@@ -54,11 +56,11 @@ export function useApi () {
       if (window.location.pathname !== '/login') {
         const path = encodeURI(location.pathname.substring(1) + location.search)
         const query = path ? { r: path } : {}
-        Router.replace({ name: 'login', query })
+        router.replace({ name: 'login', query })
       }
     },
     maintenance: () => {
-      Router.replace({ name: 'maintenance' })
+      router.replace({ name: 'maintenance' })
     },
     forbidden: () => {
       page.showForbiddenError()

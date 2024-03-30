@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { AuthType } from '@/types/auth'
 import { useOrderStore } from './order'
 
 interface State {

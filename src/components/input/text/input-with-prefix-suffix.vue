@@ -21,7 +21,7 @@ const value = computed({
 <template>
   <div class="relative flex items-center">
     <template v-if="prefix">
-      <div class="absolute left-2 text-gray-400 w-8 text-center">
+      <div class="absolute left-2 w-8 text-center text-gray-400">
         <slot name="prefix"></slot>
       </div>
     </template>
@@ -32,7 +32,7 @@ const value = computed({
       class="form-input"
       :class="{ '!pl-12': prefix, ' !pr-12': suffix }" />
     <template v-if="suffix">
-      <div class="absolute right-2 text-gray-400 w-8 text-center">
+      <div class="absolute right-2 w-8 text-center text-gray-400">
         <slot name="suffix"></slot>
       </div>
     </template>

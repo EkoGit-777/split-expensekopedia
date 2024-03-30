@@ -1,7 +1,4 @@
-import { CustomerType } from './customer.d'
-import { OrderItemType } from './order-item.d'
-
-export interface CustomerOrderType {
+interface CustomerOrderType {
   id: number,
   customer_id: number,
   order_id: number,

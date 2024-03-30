@@ -1,4 +1,4 @@
-export interface OrderCostType {
+interface OrderCostType {
   id: number,
   order_id: number,
   name: string,

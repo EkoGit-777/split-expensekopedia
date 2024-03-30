@@ -12,22 +12,22 @@ import ModalAddCustomer from './modal-add-customer.vue'
 
 const order = useOrderStore()
 const page = useTutorialStore()
-const modalAddCustomerRef = ref()
+const modalAddCustomerRef = ref<InstanceType<typeof ModalAddCustomer>>()
 
 const addCustomer = () => {
-  modalAddCustomerRef.value.open()
+  modalAddCustomerRef.value?.open()
 }
 </script>
 
 <template>
-  <div class="space-y-4 flex flex-col h-full">
+  <div class="h-full flex flex-col space-y-4">
     <div class="flex justify-between">
-      <button class="bg-3 w-fit rounded-md text-sm p-2" title="Tambah Customer" @click="addCustomer">
+      <button class="bg-3 w-fit rounded-md p-2 text-sm" title="Tambah Customer" @click="addCustomer">
         + Customer
       </button>
       <button-help @click="page.showHelpPage" />
     </div>
-    <div class="flex flex-col h-full overflow-auto space-y-4">
+    <div class="h-full flex flex-col overflow-auto space-y-4">
       <template v-if="order.people.length > 0">
         <template v-for="(person, index) in order.people" :key="index">
           <card-frame :title="person.name">
@@ -81,7 +81,7 @@ const addCustomer = () => {
                       <td class="w-full">
                         Total Diskon
                       </td>
-                      <td class="text-right text-red-500 whitespace-nowrap">
+                      <td class="whitespace-nowrap text-right text-red-500">
                         - {{ order.personDiscount(index).format() }}
                       </td>
                     </tr>
@@ -106,7 +106,7 @@ const addCustomer = () => {
         </template>
       </template>
       <template v-else>
-        <div class="flex h-full items-center justify-center bg-2">
+        <div class="bg-2 h-full flex items-center justify-center">
           Belum ada customer
         </div>
       </template>

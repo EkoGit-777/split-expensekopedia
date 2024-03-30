@@ -3,7 +3,6 @@ import { useRouter } from 'vue-router'
 import { useApi } from '@/functions/api'
 import { useAuthStore } from '@/stores/auth'
 import { useToastStore } from '@/stores/toast'
-import { AuthType } from '@/types/auth'
 
 export function useAuthModel () {
   const api = useApi()
@@ -29,8 +28,8 @@ export function useAuthModel () {
       }
     } finally {
       loading.value = false
-      return aunthenticated
     }
+    return aunthenticated
   }
   const attemptLogin = async () => {
     let aunthenticated = false
@@ -44,8 +43,8 @@ export function useAuthModel () {
       errors.value = api.formErrors(error)
     } finally {
       loading.value = false
-      return aunthenticated
     }
+    return aunthenticated
   }
   const attemptLogout = async () => {
     loading.value = true

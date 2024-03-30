@@ -8,13 +8,13 @@ import { useOrderStore } from '@/stores/order'
 import ModalCostForm from './modal-form.vue'
 
 const order = useOrderStore()
-const modalCostFormRef = ref()
+const modalCostFormRef = ref<InstanceType<typeof ModalCostForm>>()
 
 const addCost = () => {
-  modalCostFormRef.value.open({ id: null, title: '', nominal: 0 })
+  modalCostFormRef.value?.open({ id: null, title: '', nominal: 0 })
 }
 const editCost = (item: Cost, index: number) => {
-  modalCostFormRef.value.open(item, index)
+  modalCostFormRef.value?.open(item, index)
 }
 </script>
 
@@ -22,11 +22,11 @@ const editCost = (item: Cost, index: number) => {
   <card-frame :title="'Biaya'">
     <div class="space-y-2">
       <div v-for="(cost, index) in order.costs" :key="index" class="flex items-center">
-        <div class="flex-1 flex gap-2 items-center">
+        <div class="flex flex-1 items-center gap-2">
           <div class="w-20">
             {{ cost.title }}
           </div>
-          <div class="text-right w-full">
+          <div class="w-full text-right">
             {{ order.currency(currency(cost.nominal)).format() }}
           </div>
           <button-edit @click="editCost(cost, index)" />
@@ -35,7 +35,7 @@ const editCost = (item: Cost, index: number) => {
       </div>
     </div>
     <div class="text-right">
-      <button class="bg-3 rounded-md text-sm p-2" title="Tambah Biaya Ongkos Kirim" @click="addCost">
+      <button class="bg-3 rounded-md p-2 text-sm" title="Tambah Biaya Ongkos Kirim" @click="addCost">
         + Biaya
       </button>
     </div>

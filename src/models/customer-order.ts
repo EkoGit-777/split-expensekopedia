@@ -1,7 +1,6 @@
 import { reactive, ref } from 'vue'
 import { useApi } from '@/functions/api'
 import { useToastStore } from '@/stores/toast'
-import { CustomerOrderType } from '@/types/customer-order'
 
 export function useCustomerOrderModel () {
   const api = useApi()
@@ -71,8 +70,8 @@ export function useCustomerOrderModel () {
       errors.value = api.formErrors(error)
     } finally {
       loading.value = false
-      return status
     }
+    return status
   }
   const clearItem = async (id: number) => {
     loading.value = true
@@ -85,8 +84,8 @@ export function useCustomerOrderModel () {
       errors.value = api.formErrors(error)
     } finally {
       loading.value = false
-      return status
     }
+    return status
   }
 
   return {

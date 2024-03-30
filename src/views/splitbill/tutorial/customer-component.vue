@@ -47,15 +47,15 @@ const customers = ref([
 ])
 </script>
 <template>
-  <div class="space-y-4 flex flex-col h-full">
+  <div class="h-full flex flex-col space-y-4">
     <div class="relative flex justify-between">
-      <div class="bg-3 w-fit rounded-md text-sm p-2" :class="{'z-20':tutorial.activeState==0}">
+      <div class="bg-3 w-fit rounded-md p-2 text-sm" :class="{'z-20':tutorial.activeState==0}">
         + Customer
       </div>
       <button-help />
       <tutorial-component v-if="tutorial.activeState==0" class="top-16" />
     </div>
-    <div class="flex flex-col h-full overflow-auto space-y-4">
+    <div class="h-full flex flex-col overflow-auto space-y-4">
       <template v-for="customer in customers" :key="customer.name">
         <card-frame :title="customer.name" :class="{'z-20':tutorial.activeState==5}">
           <div class="space-y-2">
@@ -94,7 +94,7 @@ const customers = ref([
                   <td class="w-full">
                     Total Diskon
                   </td>
-                  <td class="text-right text-red-500 whitespace-nowrap">
+                  <td class="whitespace-nowrap text-right text-red-500">
                     {{ customer.totalDiscount }}
                   </td>
                 </tr>
@@ -116,7 +116,7 @@ const customers = ref([
           </div>
         </card-frame>
       </template>
-      <tutorial-component v-if="tutorial.activeState==5 || tutorial.activeState==6" class="top-8 ml-12 left-96 w-96" />
+      <tutorial-component v-if="tutorial.activeState==5 || tutorial.activeState==6" class="left-96 top-8 ml-12 w-96" />
     </div>
   </div>
 </template>

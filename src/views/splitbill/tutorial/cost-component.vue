@@ -22,11 +22,11 @@ const costs = ref([
   <card-frame :title="'Biaya'" :class="{'z-20':tutorial.activeState==3}">
     <div class="space-y-2">
       <div v-for="cost in costs" :key="cost.title" class="flex items-center">
-        <div class="flex-1 flex gap-2 items-center">
+        <div class="flex flex-1 items-center gap-2">
           <div class="w-20">
             {{ cost.title }}
           </div>
-          <div class="text-right w-full">
+          <div class="w-full text-right">
             {{ cost.nominal }}
           </div>
           <button-edit />
@@ -35,7 +35,7 @@ const costs = ref([
       </div>
     </div>
     <div class="text-right">
-      <button class="bg-3 rounded-md text-sm p-2">
+      <button class="bg-3 rounded-md p-2 text-sm">
         + Biaya
       </button>
     </div>

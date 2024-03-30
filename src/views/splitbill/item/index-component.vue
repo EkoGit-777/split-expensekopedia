@@ -9,40 +9,40 @@ import ModalEditItem from './modal-edit-item.vue'
 import ModalRenameCustomer from './modal-rename-customer.vue'
 
 const order = useOrderStore()
-const modalResetConfirmationRef = ref()
-const modalAddItemRef = ref()
-const modalEditItemRef = ref()
-const modalRenameCustomerRef = ref()
+const modalResetConfirmationRef = ref<InstanceType<typeof ModalConfirmation>>()
+const modalAddItemRef = ref<InstanceType<typeof ModalAddItem>>()
+const modalEditItemRef = ref<InstanceType<typeof ModalEditItem>>()
+const modalRenameCustomerRef = ref<InstanceType<typeof ModalRenameCustomer>>()
 
 const renameCustomer = (id: number|null, name: string) => {
-  modalRenameCustomerRef.value.open(id, name)
+  modalRenameCustomerRef.value?.open(id, name)
 }
 const addItem = () => {
-  modalAddItemRef.value.open()
+  modalAddItemRef.value?.open()
 }
 const editItem = (item: Item, index: number) => {
-  modalEditItemRef.value.open(item, index)
+  modalEditItemRef.value?.open(item, index)
 }
 const resetList = () => {
-  modalResetConfirmationRef.value.open()
+  modalResetConfirmationRef.value?.open()
 }
 </script>
 
 <template>
   <template v-if="typeof order.selectedPerson === 'number' && !Number.isNaN(order.selectedPerson)">
-    <div class="flex flex-col h-full rounded overflow-auto pb-8">
-      <div class="flex bg-3 px-4 py-2 text-lg rounded-t space-x-2">
+    <div class="h-full flex flex-col overflow-auto rounded pb-8">
+      <div class="bg-3 flex rounded-t px-4 py-2 text-lg space-x-2">
         <div>{{ order.people[order.selectedPerson].name }}</div>
         <button-edit @click="renameCustomer(order.people[order.selectedPerson].customerId, order.people[order.selectedPerson].name)" />
       </div>
-      <div class="flex flex-col bg-2 p-4 space-y-4 rounded-b max-h-full overflow-y-auto">
-        <div class="overflow-y-auto px-2 max-h-full">
+      <div class="bg-2 max-h-full flex flex-col overflow-y-auto rounded-b p-4 space-y-4">
+        <div class="max-h-full overflow-y-auto px-2">
           <table>
             <thead class="text-sm">
-              <th class="text-left w-full">
+              <th class="w-full text-left">
                 Pesanan
               </th>
-              <th class="text-right whitespace-nowrap">
+              <th class="whitespace-nowrap text-right">
                 Harga
               </th>
               <th>Aksi</th>
@@ -56,7 +56,7 @@ const resetList = () => {
                   {{ order.currency(item.price) }}
                 </td>
                 <td>
-                  <div class="flex space-x-2 px-2">
+                  <div class="flex px-2 space-x-2">
                     <button-edit @click="editItem(item, index)" />
                     <button-remove @click="order.itemRemove(index)" />
                   </div>
@@ -76,7 +76,7 @@ const resetList = () => {
             </tbody>
             <tfoot v-if="order.people[order.selectedPerson].items.length">
               <tr>
-                <th class="text-right py-2 pr-8">
+                <th class="py-2 pr-8 text-right">
                   Total Urunan
                 </th>
                 <td class="text-right">
@@ -87,7 +87,7 @@ const resetList = () => {
             </tfoot>
           </table>
         </div>
-        <div v-if="order.people[order.selectedPerson].items.length" class="px-2 flex justify-between">
+        <div v-if="order.people[order.selectedPerson].items.length" class="flex justify-between px-2">
           <div>
             <button class="text-link" @click="resetList">
               Reset Item

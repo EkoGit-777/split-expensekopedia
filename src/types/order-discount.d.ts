@@ -1,4 +1,4 @@
-export interface OrderDiscountType {
+interface OrderDiscountType {
   id: number,
   order_id: number,
   nominal: number,

@@ -1,7 +1,6 @@
 import { reactive, ref } from 'vue'
 import { useApi } from '@/functions/api'
 import { useToastStore } from '@/stores/toast'
-import { OrderCostType } from '@/types/order-cost'
 
 export function useOrderCostModel () {
   const api = useApi()
@@ -73,8 +72,8 @@ export function useOrderCostModel () {
       errors.value = api.formErrors(error)
     } finally {
       loading.value = false
-      return status
     }
+    return status
   }
 
   return {

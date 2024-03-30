@@ -1,6 +1,5 @@
 import { reactive, ref } from 'vue'
 import { useApi } from '@/functions/api'
-import { CustomerType } from '@/types/customer'
 
 export function useCustomerModel () {
   const api = useApi()

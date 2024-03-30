@@ -19,13 +19,13 @@ withDefaults(defineProps<Props>(), {
   errorForm: false,
   prefixIcon: false,
 })
-const modal = ref()
+const modal = ref<InstanceType<typeof AppModal>>()
 
 const open = () => {
-  modal.value.open()
+  modal.value?.open()
 }
 const close = () => {
-  modal.value.close()
+  modal.value?.close()
 }
 const confirm = () => {
   emit('confirm')
@@ -45,9 +45,9 @@ defineExpose({ open, close })
       {{ message }}
     </div>
     <template #footer>
-      <div class="flex gap-2 justify-end">
+      <div class="flex justify-end gap-2">
         <div>
-          <button class="btn whitespace-nowrap btn-unstyled border border-white" @click="cancel">
+          <button class="btn btn-unstyled whitespace-nowrap border border-white" @click="cancel">
             Batal
           </button>
         </div>

@@ -4,7 +4,7 @@ import BillDetail from './bill-detail.vue'
 import BillList from './bill-list.vue'
 </script>
 <template>
-  <div class="flex p-4 h-full">
+  <div class="h-full flex p-4">
     <div class="w-96 flex-none">
       <bill-list />
     </div>

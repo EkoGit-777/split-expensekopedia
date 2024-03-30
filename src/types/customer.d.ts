@@ -1,4 +1,4 @@
-export interface CustomerType {
+interface CustomerType {
   id: number,
   user_id: number,
   name: string,

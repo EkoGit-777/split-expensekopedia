@@ -1,4 +1,4 @@
-export interface OrderItemType {
+interface OrderItemType {
   id: number,
   customer_order_id: number,
   name: string,

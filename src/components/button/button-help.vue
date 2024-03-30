@@ -1,7 +1,7 @@
 <template>
-  <button class="bg-3 h-8 w-8 p-2 rounded" title="Tutorial">
+  <button class="bg-3 h-8 w-8 rounded p-2" title="Tutorial">
     <svg
-      class="w-4 h-4 fill-current"
+      class="h-4 w-4 fill-current"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512">
       <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->

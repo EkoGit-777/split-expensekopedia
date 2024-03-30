@@ -1,42 +1,47 @@
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
-import { defineConfig, loadEnv } from 'vite'
+import UnoCSS from 'unocss/vite'
+import { UserConfig, defineConfig, loadEnv } from 'vite'
+// import { VitePWA } from 'vite-plugin-pwa'
 
-/**
- * @type {import('vite').UserConfig}
- */
-// }
-
-
-// https://vitejs.dev/config/
-export default ({ mode }) => {
+export default defineConfig(({ mode }): UserConfig => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
-  return defineConfig({
+  // import.meta.env.VITE_NAME available here with: process.env.VITE_NAME
+
+  return {
     plugins: [
-      vue(),
-      // VitePWA,
+      vue({
+        script: {
+          defineModel: true,
+        },
+      }),
+      UnoCSS(),
     ],
+
+    define: {
+      'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+    },
+
     server: {
-      host: process.env.VITE_SERVER_HOST,
-      port: Number(process.env.VITE_SERVER_PORT) ?? 3000,
+      host: process.env.VITE_SERVER_HOST ?? 'splitbill.api.ekoadiguna.test',
+      port: Number(process.env.VITE_SERVER_PORT ?? 3030),
       https: process.env.VITE_SERVER_HTTPS_CERT ? {
         cert: process.env.VITE_SERVER_HTTPS_CERT,
         key: process.env.VITE_SERVER_HTTPS_KEY,
         ciphers: process.env.VITE_SERVER_HTTPS_CIPHERS,
-      } : false,
+      } : undefined,
     },
-    define: {
-      '__APP_VERSION__': JSON.stringify(process.env.npm_package_version),
-    },
+
     build: {
-      outDir: 'dist/' + process.env.npm_package_version,
       sourcemap: true,
+      outDir: 'dist/' + process.env.npm_package_version,
     },
+
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
       },
     },
-  })
-}
+  }
+})

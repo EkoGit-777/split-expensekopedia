@@ -1,4 +1,4 @@
-export interface OrderType {
+interface OrderType {
   id: number,
   created_by: number,
   number: string,

@@ -1,4 +1,4 @@
-export interface AuthType {
+interface AuthType {
   id: number|null,
   name: string,
   email: string,

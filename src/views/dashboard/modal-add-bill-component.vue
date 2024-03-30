@@ -4,23 +4,22 @@ import AppButton from '@/components/button/index-component.vue'
 import AppInputTextPrefix from '@/components/input/text/input-with-prefix-suffix.vue'
 import AppModal from '@/components/modal/index-component.vue'
 import { useOrderStore } from '@/stores/order'
-import { OrderType } from '@/types/order'
 
 const emit = defineEmits<{
   (e: 'created', data: OrderType): void,
 }>()
 const order = useOrderStore()
-const modal = ref()
+const modal = ref<InstanceType<typeof AppModal>>()
 const billNumber = ref('')
 const restaurantname = ref('')
 
 const open = () => {
   billNumber.value = ''
   restaurantname.value = ''
-  modal.value.open()
+  modal.value?.open()
 }
 const close = () => {
-  modal.value.close()
+  modal.value?.close()
 }
 
 const submit = async () => {
@@ -47,7 +46,7 @@ defineExpose({ open, close })
             <template #prefix>
               <div class="pl-2">
                 <svg
-                  class="w-6 h-4 fill-current"
+                  class="h-4 w-6 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                   <path
@@ -66,7 +65,7 @@ defineExpose({ open, close })
             <template #prefix>
               <div class="pl-2">
                 <svg
-                  class="w-6 h-4 fill-current"
+                  class="h-4 w-6 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                   <path
